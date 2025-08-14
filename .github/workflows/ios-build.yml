@@ -23,4 +23,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Build iOS app
-        run: ./gradlew :iosApp:build
+        run: ./gradlew :iosApp:assembleDebug
