@@ -22,10 +22,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install dependencies
-        run: |
-          brew install cocoapods
-          pod install --project-directory=iosApp
-
       - name: Build iOS app
         run: ./gradlew :iosApp:build
