@@ -1,0 +1,31 @@
+name: iOS Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Install dependencies
+        run: |
+          brew install cocoapods
+          pod install --project-directory=iosApp
+
+      - name: Build iOS app
+        run: ./gradlew :iosApp:build
